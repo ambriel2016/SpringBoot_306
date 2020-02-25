@@ -9,11 +9,17 @@
 <div th:each="director : ${directors}">
     <h2 th:text="${director.name}"></h2>
     <h6 th:inline="text">specializing in [[${director.genre}]]</h6>
-    <ul>
-        <th:block th:each="movie : ${director.movies}">
-            <li th:inline="text"><b>[[${movie.title}]]</b> released in [[${movie.year}]].</li>
-        </th:block>
-    </ul>
+<ul>
+    <th:block th:each="movie : ${director.movies}">
+    <li th:inline="text"><b>[[${movie.title}]]</b> released in [[${movie.year}]].</li>
+    </th:block>
+</ul>
 </div>
+<select> <!-- add th:field="*{variable}" -->
+    <div id="actor" th:each="director : ${directors}">
+        <option th:value="${director.getId()}" th:text="${director.name}"></option>
+
+    </div>
+</select>
 </body>
 </html>
